@@ -29,6 +29,6 @@ def build_trie(output_file):
 
 
 if __name__ == "__main__":
-    output_path = os.path.join(os.path.dirname(__file__), "sensitive_words.trie")
+    output_path = os.path.join(os.path.dirname(__file__), "./data/sensitive_words.trie")
     build_trie(output_path)
     print(f"Trie树构建完成，已保存至：{output_path}")
