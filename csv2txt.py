@@ -44,7 +44,7 @@ if __name__ == "__main__":
     # 示例用法
     input_csv = "./data/comments.csv"  # 替换为你的CSV文件路径
     output_txt = "./data/comments.txt"  # 替换为你想保存的TXT文件路径
-    column_to_extract = "email"  # 替换为你想提取的列名
+    column_to_extract = "content"  # 替换为你想提取的列名
 
     try:
         count = extract_column_to_txt(input_csv, column_to_extract, output_txt)
