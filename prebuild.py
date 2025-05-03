@@ -20,7 +20,7 @@ def load_sensitive_words(dic_dir):
 
 def build_trie(output_file):
     """构建并保存Trie树"""
-    dic_dir = os.path.join(os.path.dirname(__file__), "dic")
+    dic_dir = os.path.join(os.path.dirname(__file__), "dic/raw")
     trie = load_sensitive_words(dic_dir)
 
     with open(output_file, 'wb') as f:
@@ -28,7 +28,10 @@ def build_trie(output_file):
     return True
 
 
-if __name__ == "__main__":
-    output_path = os.path.join(os.path.dirname(__file__), "./data/sensitive_words.trie")
+def main():
+    output_path = os.path.join(os.path.dirname(__file__), "./dic/sensitive_words.trie")
     build_trie(output_path)
     print(f"Trie树构建完成，已保存至：{output_path}")
+
+if __name__ == "__main__":
+    main()

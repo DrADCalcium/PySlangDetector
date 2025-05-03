@@ -1,5 +1,5 @@
 import csv
-
+import pathlib
 
 def extract_column_to_txt(csv_file, column_name, output_file):
     """
@@ -15,7 +15,7 @@ def extract_column_to_txt(csv_file, column_name, output_file):
     """
     try:
         with open(csv_file, mode='r', encoding='utf-8') as csv_input, \
-                open(output_file, mode='w', encoding='utf-8') as txt_output:
+                open(output_file, mode='a+', encoding='utf-8') as txt_output:
 
             # 读取CSV文件
             csv_reader = csv.DictReader(csv_input)
@@ -39,15 +39,21 @@ def extract_column_to_txt(csv_file, column_name, output_file):
         raise Exception(f"处理文件时出错: {str(e)}")
 
 
-# 使用示例
-if __name__ == "__main__":
-    # 示例用法
-    input_csv = "./data/comments.csv"  # 替换为你的CSV文件路径
-    output_txt = "./data/comments.txt"  # 替换为你想保存的TXT文件路径
+def main():
+    comments_input_csv = "./MediaCrawler-Modified/data/comments.csv"
+    comments_output_txt = "./data/contents.txt"
+    content_input_csv = "./MediaCrawler-Modified/data/contents.csv"
+
+    if pathlib.Path(content_input_csv).exists():
+        extract_column_to_txt(content_input_csv, "desc", comments_output_txt)
     column_to_extract = "content"  # 替换为你想提取的列名
 
     try:
-        count = extract_column_to_txt(input_csv, column_to_extract, output_txt)
-        print(f"成功提取 {count} 行数据到 {output_txt}")
+        count = extract_column_to_txt(comments_input_csv, column_to_extract, comments_output_txt) + 1
+        print(f"成功提取 {count} 行数据到 {comments_output_txt}")
     except Exception as e:
         print(f"错误: {str(e)}")
+
+# 使用示例
+if __name__ == "__main__":
+    main()

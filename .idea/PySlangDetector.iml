@@ -4,6 +4,10 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/data" />
+      <excludeFolder url="file://$MODULE_DIR$/MediaCrawler-Modified/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/MediaCrawler-Modified/browser_data" />
+      <excludeFolder url="file://$MODULE_DIR$/MediaCrawler-Modified/data" />
+      <excludeFolder url="file://$MODULE_DIR$/MediaCrawler-Modified/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

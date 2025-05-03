@@ -44,7 +44,7 @@ def calculate_number_of_files(file_store_path: str) -> int:
 
 
 class XhsCsvStoreImplement(AbstractStore):
-    csv_store_path: str = "data/xhs"
+    csv_store_path: str = "data"
     file_count:int=calculate_number_of_files(csv_store_path)
 
     def make_save_file_name(self, store_type: str) -> str:
@@ -56,7 +56,7 @@ class XhsCsvStoreImplement(AbstractStore):
         Returns: eg: data/xhs/search_comments_20240114.csv ...
 
         """
-        return f"{self.csv_store_path}/{self.file_count}_xhs_{store_type}_{utils.get_current_date()}.csv"
+        return f"{self.csv_store_path}/{store_type}.csv"
 
     async def save_data_to_csv(self, save_item: Dict, store_type: str):
         """
