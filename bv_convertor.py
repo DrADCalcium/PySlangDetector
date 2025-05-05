@@ -1,6 +1,6 @@
 import re
 import requests
-from urllib.parse import urlparse
+
 
 
 def extract_bv_from_url(url):

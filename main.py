@@ -10,7 +10,6 @@ from bv_convertor import extract_bv_from_url as url2bv
 import shutil
 import os
 import platform
-import glob
 
 def trie_prebuild():
     prebuild()
@@ -29,7 +28,7 @@ def load_file_lines(file_path):
 def save_file_lines(file_path, lines):
     with open(file_path, 'a+', encoding='utf-8') as f:
         for line in lines:
-            f.write(line + '\n')
+            f.write(line)
 
 def data_init():
     crawler_data_dir = './MediaCrawler-Modified/data'
@@ -153,19 +152,23 @@ if __name__ == '__main__':
         words =  tokenizer.tokenize(line)
         is_sensitive =  FilterAPI.check_sensitive(filter_instance, words)
         if is_sensitive:
-            save_file_lines('data/sensitive_contents.txt', line)
+            save_file_lines('data/sensitive_contents.txt', [line + '\n'])
             count = count + 1
 
     if count:
         print(f"检测到敏感词，共发现 {count} 条敏感内容")
         print("敏感内容已保存至 data/sensitive_contents.txt")
         system = platform.system()
+
+        file_path = 'data/sensitive_contents.txt'
+        full_path = Path(file_path).resolve()
+
         if system == "Windows":
-            os.startfile('data/sensitive_contents.txt')
+            os.startfile(str(full_path))
         elif system == "Darwin":  # macOS
-            subprocess.run(["open", 'data/sensitive_contents.txt'])
+            subprocess.run(["open", str(full_path)])
         else:  # Linux 和其他类Unix系统
-            subprocess.run(["xdg-open", 'data/sensitive_contents.txt'])
+            subprocess.run(["xdg-open", str(full_path)])
 
     else:
         print("没有检测到敏感内容，程序退出")
