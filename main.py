@@ -7,6 +7,7 @@ import argparse
 import sys
 import subprocess
 from bv_convertor import extract_bv_from_url as url2bv
+from xhs_convertor import extract_xhs_from_url as url2xhs
 import shutil
 import os
 import platform
@@ -69,6 +70,7 @@ def args_decode(args):
             sys.exit(1)
 
     elif args.platform == 'xhs' and args.url:
+        xhs_id, xsec_token = url2xhs(args.url)
         cmd = [
             'python',
             'main.py',
@@ -77,7 +79,7 @@ def args_decode(args):
             '--get_comment', 't',
             '--get_sub_comment', 't',
             '--save_data_option', 'csv',
-            '--xhs_url', args.url,
+            '--xhs_url', str('https://www.xiaohongshu.com/discovery/item/' + xhs_id + '?xsec_token=' + xsec_token),
             '--headless', 't'
         ]
 
