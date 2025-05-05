@@ -79,7 +79,7 @@ def args_decode(args):
             '--get_comment', 't',
             '--get_sub_comment', 't',
             '--save_data_option', 'csv',
-            '--xhs_url', str('https://www.xiaohongshu.com/discovery/item/' + xhs_id + '?xsec_token=' + xsec_token),
+            '--xhs_url', f'https://www.xiaohongshu.com/discovery/item/{xhs_id}?xsec_token={xsec_token}',
             '--headless', 't'
         ]
 
