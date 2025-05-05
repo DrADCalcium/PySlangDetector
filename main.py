@@ -135,11 +135,12 @@ def args_decode(args):
 if __name__ == '__main__':
     data_init()
 
-    parser = argparse.ArgumentParser(description='基于文本内容安全的社交媒体敏感词检测系统 by Edgar')
+    parser = argparse.ArgumentParser(description='基于文本内容安全的社交媒体敏感词检测系统 by Edgar' + '\n' +'PS：在传入小红书URL时，由于命令行特性，请只保留推文ID和xsec_token，移动端短链可自动处理')
     parser.add_argument('--prebuild', action='store_true', help='预处理敏感词库，构建Trie树，处理后退出')
-    parser.add_argument('--platform', type=str, help='指定目标平台 { bili | xhs | wb }')
+    parser.add_argument('--platform', type=str, help='指定目标平台为B站、小红书或微博 { bili | xhs | wb }')
     parser.add_argument('--url', type=str, help='视频或推文链接')
-    parser.add_argument('--login', action='store_true', help='弹出浏览器登录对应平台')
+    parser.add_argument('--login', action='store_true', help='弹出浏览器窗口以登录对应平台')
+    parser.add_argument('--show', action='store_true', help='检测结束后通过默认文本编辑器打开结果')
 
     args = parser.parse_args()
     args_decode(args)
@@ -158,17 +159,20 @@ if __name__ == '__main__':
     if count:
         print(f"检测到敏感词，共发现 {count} 条敏感内容")
         print("敏感内容已保存至 data/sensitive_contents.txt")
-        system = platform.system()
 
-        file_path = 'data/sensitive_contents.txt'
-        full_path = Path(file_path).resolve()
-
-        if system == "Windows":
-            os.startfile(str(full_path))
-        elif system == "Darwin":  # macOS
-            subprocess.run(["open", str(full_path)])
-        else:  # Linux 和其他类Unix系统
-            subprocess.run(["xdg-open", str(full_path)])
+        if args.show:
+            system = platform.system()
+            file_path = 'data/sensitive_contents.txt'
+            full_path = Path(file_path).resolve()
+            if system == "Windows":
+                os.startfile(str(full_path))
+                print("已通过默认文本编辑器打开敏感文本文件")
+            elif system == "Darwin":  # macOS
+                subprocess.run(["open", str(full_path)])
+                print("已通过默认文本编辑器打开敏感文本文件")
+            else:  # Linux 和其他类Unix系统
+                subprocess.run(["xdg-open", str(full_path)])
+                print("已通过默认文本编辑器打开敏感文本文件")
 
     else:
         print("没有检测到敏感内容，程序退出")
