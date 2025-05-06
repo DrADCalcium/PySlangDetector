@@ -40,6 +40,7 @@ def data_init():
     if os.path.exists(data_dir):
         shutil.rmtree(data_dir)
     os.makedirs(data_dir)
+    logging.info('程序初始化')
 
 
 def args_decode(args):
