@@ -25,6 +25,7 @@ class WinGUI(Tk):
 
     def __win(self):
         self.title("PySlangDetector")
+        self.iconbitmap("static/icon.ico")
         # 设置窗口大小、居中
         width = 800
         height = 370
