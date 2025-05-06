@@ -178,7 +178,7 @@ python main.py --platform bili --url https://www.bilibili.com/BV123abcDEF
 
 #### 打包后运行（未测试）
 
-在项目目录下，使用 pyinstaller 对 `GUI.py` 打包成可执行文件后运行。**由于未测试具体运行环境，所以不推荐打包后脱离项目源码。**
+在项目目录下，使用 pyinstaller 对 `GUI.pyw` 打包成可执行文件后运行。**由于未测试具体运行环境，所以不推荐打包后脱离项目源码。**
 
 
 
