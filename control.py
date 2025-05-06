@@ -36,7 +36,7 @@ class Controller:
                 'main.py',
                 '--platform', 'xhs',
                 '--url', str(input_url),
-                '--show' if show_result else None
+                *(['--show'] if show_result else [])
             ]
             threading.Thread(target=subprocess.run, args=(cmd,)).start()
 
@@ -47,7 +47,7 @@ class Controller:
                 'main.py',
                 '--platform', 'wb',
                 '--url', str(input_url),
-                '--show' if show_result else None
+                *(['--show'] if show_result else [])
             ]
             threading.Thread(target=subprocess.run, args=(cmd,)).start()
 
