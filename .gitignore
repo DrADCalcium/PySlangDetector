@@ -4,5 +4,6 @@ __pycache__/
 */*.trie
 */*.ttc
 */raw
+!*/raw/example.txt
 /temp
 app.log
