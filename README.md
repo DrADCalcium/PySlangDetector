@@ -75,8 +75,6 @@ Windows下 playwright 默认安装地址如下：
 %USERPROFILE%\AppData\Local\ms-playwright
 ```
 
-
-
 #### 使用虚拟环境（推荐）
 
 安装好 Python 3.12 及以上版本后，打开系统的终端或命令行，使用 `cd` 命令进入项目目录（Windows 系统下使用 cmd 为 `dir` ），使用 Python 命令创建 venv 虚拟环境，激活虚拟环境，然后执行 `pip` 安装所需的外部库。外部库安装完毕后，还需要手动安装 playwright 。如果网络环境无法正常安装，可以指定国内镜像源。
