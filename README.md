@@ -186,6 +186,8 @@ python main.py --platform bili --url https://www.bilibili.com/BV123abcDEF
 
 输出结果可在项目 `data` 目录下找到，其中 `contents.txt` 为未过滤文本内容，`sensitive_contents.txt` 为过滤后包含敏感信息的文本内容，两个文件中每条文本独立成行。在命令运行或GUI运行时选择展示结果，会在主程序检测完毕后使用操作系统默认的文本编辑器打开 `sensitive_contents.txt` 。
 
+本项目包含日志功能，所有运行的日志信息均存储在 `app.log` 内，请手动清理。
+
 
 
 ## Acknowledgements
