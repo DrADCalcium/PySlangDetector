@@ -5,3 +5,4 @@ __pycache__/
 */*.ttc
 */raw
 /temp
+app.log

@@ -9,6 +9,7 @@
       <excludeFolder url="file://$MODULE_DIR$/MediaCrawler-Modified/data" />
       <excludeFolder url="file://$MODULE_DIR$/MediaCrawler-Modified/venv" />
       <excludeFolder url="file://$MODULE_DIR$/dic/raw" />
+      <excludeFolder url="file://$MODULE_DIR$/logs" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12 (PySlangDetector)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
