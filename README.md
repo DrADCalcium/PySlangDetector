@@ -116,7 +116,7 @@ playwright install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 
 ### 词库准备
 
-*由于某些原因，项目不提供现成的敏感词库，请自行准备。*
+*由于某些原因，本项目不提供现成的敏感词库，请自行准备。*
 
 将想要过滤的词按照每个单独一行的格式存储在 txt 文件内，可保存多个 txt 文件，并移动到项目目录中的 `dic/raw` 文件夹内，程序在词库预处理时会收集文件夹内的所有 txt 文件。文件夹内有 `example.txt` 作为示例文档，可以随意修改使用。
 
@@ -124,7 +124,7 @@ playwright install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 
 ### 使用命令
 
-打开系统的终端或命令行，使用 `cd` 命令进入项目目录（Windows 系统下使用 cmd 为 `dir` ），使用 Python 命令运行 `main.py` ，可得到运行参数帮助。
+在项目目录下，使用 `Python` 命令运行 `main.py` ，可得到运行参数帮助。
 
 ```bash
 python main.py
@@ -153,7 +153,7 @@ options:
 
 按照提示信息传入参数即可。
 
-由于诸多平台默认的长链接 URL 带有较多参数，而未经编码的 URL 参数间使用的 `&` 连接符会被终端处理成并行指令，所以在传入长链接时请手动删除多余参数，如 `https://www.platform.com/item/ABC123def`  （小红书平台请保留 `xsec_token` 参数，修改为 `https://www.xiaohongshu.com/explore/123456?xsec_token=ABC-def-789=` 的形式）。移动端所使用的短链接无需处理。
+由于各平台默认的长链接 URL 带有较多参数，而未经编码的 URL 参数间使用的 `&` 连接符会被终端处理成并行指令，所以在传入长链接时请手动删除多余参数，如 `https://www.platform.com/item/ABC123def`  （小红书平台请保留 `xsec_token` 参数，修改为 `https://www.xiaohongshu.com/explore/123456?xsec_token=ABC-def-789=` 的形式）。移动端所使用的短链接无需处理。
 
 **如果是首次使用请先预处理词库，并登录想要检测的社交媒体平台。**
 
@@ -172,13 +172,13 @@ python main.py --platform bili --url https://www.bilibili.com/BV123abcDEF
 
 #### 直接运行
 
-打开系统的终端或命令行，使用 `cd` 命令进入项目目录（Windows 系统下使用 cmd 为 `dir` ），使用 Python 命令运行 `GUI.py` ，即可打开图形用户界面。
+在项目目录下，使用 Python 命令运行 `GUI.py` ，即可打开图形用户界面。
 
 ![gui_example.png](./static/gui_example.png "gui_example")
 
 #### 打包后运行（未测试）
 
-打开系统的终端或命令行，使用 `cd` 命令进入项目目录（Windows 系统下使用 cmd 为 `dir` ）。可以使用 pyinstaller 对 `GUI.py` 打包成可执行文件后运行。由于未测试具体运行环境，所以不推荐打包后脱离项目源码。
+在项目目录下，使用 pyinstaller 对 `GUI.py` 打包成可执行文件后运行。**由于未测试具体运行环境，所以不推荐打包后脱离项目源码。**
 
 
 
@@ -194,10 +194,10 @@ python main.py --platform bili --url https://www.bilibili.com/BV123abcDEF
 
 > ~~谢谢他的项目减少了我很多的毕设工作量。~~~~简中互联网使用环境懂得都懂，平台不开放而且反爬机制肥肠滴先进。QwQ本科毕设只做爬虫的工作量其实就够了。~~
 
-本项目开发基于 Python 3.12 及有关的外部库。
+本项目的开发基于 Python 3.12 及有关的外部库。
 
-本项目使用 JetBrains 开发的 PyCharm IDE 编写。
+本项目使用 JetBrains Inc. 开发的 PyCharm IDE 编写。
 
-~~本项目莫名其妙由 systemd 驱动~~ 假的，我拿Windows开发的（笑 
+~~本项目莫名其妙由 systemd 驱动~~  假的，我拿Windows开发的（笑 
 
-~~（（那我是不是还得感谢微软最近几个Windows累计更新没有让我电脑蓝屏~~
+~~（（那我还得感谢微软最近几个Windows累积更新没有让我电脑蓝屏~~
