@@ -2,13 +2,11 @@
 
 # PySlangDetector
 
----
-
 *小孩子不可以在网上说藏话，不懂事说着玩也不可以哦。*
 
 一个用于检测社交媒体推文以及评论区内容中是否包含指定词汇（如敏感词）的工具，基于 Python 3.12开发，支持的社交媒体平台有 Bilibili 、小红书和微博。使用时可以直接在终端运行，也可以使用基于 tkinter 开发的 GUI ，或是自行打包成可执行文件运行。
 
----
+
 
 ## Announcement
 
@@ -22,7 +20,7 @@
 
 关于本项目的最终解释权归开发者所有。开发者保留随时更改或更新本免责声明的权利，恕不另行通知。
 
----
+
 
 ## Installation
 
@@ -112,7 +110,7 @@ playwright install -i https://mirrors.aliyun.com/pypi/simple/
 playwright install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 ```
 
----
+
 
 ## Usage
 
@@ -182,15 +180,15 @@ python main.py --platform bili --url https://www.bilibili.com/BV123abcDEF
 
 打开系统的终端或命令行，使用 `cd` 命令进入项目目录（Windows 系统下使用 cmd 为 `dir` ）。可以使用 pyinstaller 对 `GUI.py` 打包成可执行文件后运行。由于未测试具体运行环境，所以不推荐打包后脱离项目源码。
 
----
+
 
 ## Results
 
 输出结果可在项目 `data` 目录下找到，其中 `contents.txt` 为未过滤文本内容，`sensitive_contents.txt` 为过滤后包含敏感信息的文本内容，两个文件中每条文本独立成行。在命令运行或GUI运行时选择展示结果，会在主程序检测完毕后使用操作系统默认的文本编辑器打开 `sensitive_contents.txt` 。
 
----
 
-## Acknowledgement
+
+## Acknowledgements
 
 本项目使用的爬虫部分为开源项目 [NanmiCoder](https://github.com/NanmiCoder) / [MediaCrawler](https://github.com/NanmiCoder/MediaCrawler) 修改而成。
 
