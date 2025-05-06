@@ -3,7 +3,7 @@ __pycache__/
 .venv/
 */*.trie
 */*.ttc
-*/raw
+*/raw/*
 !*/raw/example.txt
 /temp
 app.log
