@@ -15,14 +15,20 @@ import logging
 from .crawler_util import *
 from .slider_util import *
 from .time_util import *
+import os
 
 
 def init_loging_config():
     level = logging.INFO
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    log_file_path = os.path.join(current_dir, '../../app.log')
+    os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
     logging.basicConfig(
         level=level,
-        format="%(asctime)s %(name)s %(levelname)s (%(filename)s:%(lineno)d) - %(message)s",
-        datefmt='%Y-%m-%d %H:%M:%S'
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S',
+        filename=log_file_path,
+        encoding='utf-8'
     )
     _logger = logging.getLogger("MediaCrawler-Modified")
     _logger.setLevel(level)

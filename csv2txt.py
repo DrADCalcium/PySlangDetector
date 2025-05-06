@@ -1,5 +1,6 @@
 import csv
 import pathlib
+import logging
 
 def extract_column_to_txt(csv_file, column_name, output_file):
     """
@@ -50,9 +51,9 @@ def main():
 
     try:
         count = extract_column_to_txt(comments_input_csv, column_to_extract, comments_output_txt) + 1
-        print(f"成功提取 {count} 行数据到 {comments_output_txt}")
+        logging.info(f"成功提取 {count} 行数据到 {comments_output_txt}")
     except Exception as e:
-        print(f"错误: {str(e)}")
+        logging.info(f"错误: {str(e)}")
 
 # 使用示例
 if __name__ == "__main__":

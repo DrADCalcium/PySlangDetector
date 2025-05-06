@@ -15,6 +15,7 @@ import platform
 
 def trie_prebuild():
     prebuild()
+    logging.info("Trie树构建完成，已保存至：/dic/sensitive_words.trie")
 
 def txt_prebuild():
     csv2txt()
@@ -141,7 +142,8 @@ def args_decode(args):
 logging.basicConfig(
         filename='app.log',  # 日志文件名
         level=logging.INFO,  # 日志级别
-        format='%(asctime)s - %(levelname)s - %(message)s',  # 日志格式
+        format='%(asctime)s - %(levelname)s - [main] %(message)s',  # 日志格式
+        datefmt='%Y-%m-%d %H:%M:%S',
         encoding='utf-8'
    )
 

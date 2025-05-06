@@ -1,4 +1,6 @@
 # tokenizer.py
+import logging
+
 import jieba
 import re
 from typing import List
@@ -14,6 +16,7 @@ class Tokenizer:
 
     def _init_jieba(self, custom_dict_path):
         """初始化jieba分词配置"""
+        jieba.setLogLevel(logging.CRITICAL)
         jieba.initialize()
         if custom_dict_path:
             jieba.load_userdict(custom_dict_path)
