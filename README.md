@@ -1,6 +1,4 @@
-![title.png](.\static\title.png "title")
-
- 
+![title.png](./static/title.png "title")
 
 # PySlangDetector
 
@@ -205,5 +203,3 @@ python main.py --platform bili --url https://www.bilibili.com/BV123abcDEF
 ~~本项目莫名其妙由 systemd 驱动~~ 假的，我拿Windows开发的（笑 
 
 ~~（（那我是不是还得感谢微软最近几个Windows累计更新没有让我电脑蓝屏~~
-
-
