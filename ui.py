@@ -19,6 +19,9 @@ class WinGUI(Tk):
         self.tk_button_login_wb = self.__tk_button_login_wb( self.tk_label_frame_func_frame) 
         self.tk_label_func_hint = self.__tk_label_func_hint( self.tk_label_frame_func_frame) 
         self.tk_label_frame_log_frame = self.__tk_label_frame_log_frame(self)
+        self.tk_text_log = self.__tk_text_log(self.tk_label_frame_log_frame)
+        self.last_file_position = self._get_file_size("app.log")
+        self.update_log()
 
     def __win(self):
         self.title("PySlangDetector")
@@ -125,6 +128,32 @@ class WinGUI(Tk):
         frame.place(x=405, y=5, width=380, height=355)
         return frame
 
+    def __tk_text_log(self, parent):
+        text = Text(parent, wrap="word")
+        text.place(x=10, y=10, width=360, height=330)
+        return text
+
+    def _get_file_size(self, file_path):
+        """获取文件的当前大小"""
+        try:
+            with open(file_path, "rb") as f:
+                f.seek(0, 2)  # 跳转到文件末尾
+                return f.tell()  # 返回文件指针位置
+        except FileNotFoundError:
+            return 0
+    def update_log(self):
+        try:
+            with open("app.log", "r", encoding="utf-8") as log_file:
+                log_file.seek(self.last_file_position)  # 跳转到上次读取的位置
+                new_content = log_file.read()  # 读取新增内容
+                if new_content:  # 如果有新增内容
+                    self.tk_text_log.insert("end", new_content)  # 插入到Text组件中
+                    self.tk_text_log.see("end")  # 滚动到最新内容
+                    self.last_file_position = log_file.tell()  # 更新文件指针位置
+        except FileNotFoundError:
+            self.tk_text_log.insert("end", "日志文件未找到\n")
+        self.after(1000, self.update_log)  # 每隔1秒更新一次日志
+
 
 class Win(WinGUI):
     def __init__(self, controller):
@@ -151,6 +180,8 @@ class Win(WinGUI):
 
     def get_show_result_checkbox_state(self):
         return self.tk_check_button_show_result_checkbox.instate(['selected'])
+
+
 
 
 if __name__ == "__main__":
