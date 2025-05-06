@@ -176,7 +176,7 @@ python main.py --platform bili --url https://www.bilibili.com/BV123abcDEF
 
 打开系统的终端或命令行，使用 `cd` 命令进入项目目录（Windows 系统下使用 cmd 为 `dir` ），使用 Python 命令运行 `GUI.py` ，即可打开图形用户界面。
 
-![gui_example.png](.\static\gui_example.png "gui_example")
+![gui_example.png](./static/gui_example.png "gui_example")
 
 #### 打包后运行（未测试）
 
