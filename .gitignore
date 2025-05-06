@@ -7,3 +7,6 @@ __pycache__/
 !*/raw/example.txt
 /temp
 app.log
+/build
+tk_GUI.exe
+tk_GUI.spec
