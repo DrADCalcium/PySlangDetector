@@ -130,7 +130,7 @@ class WinGUI(Tk):
 
     def __tk_text_log(self, parent):
         text = Text(parent, wrap="word")
-        text.place(x=10, y=10, width=360, height=330)
+        text.place(x=10, y=10, width=360, height=310)
         return text
 
     def _get_file_size(self, file_path):
