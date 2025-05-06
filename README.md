@@ -194,7 +194,7 @@ python main.py --platform bili --url https://www.bilibili.com/BV123abcDEF
 
 本项目使用的爬虫部分为开源项目 [NanmiCoder](https://github.com/NanmiCoder) / [MediaCrawler](https://github.com/NanmiCoder/MediaCrawler) 修改而成。
 
-> ~~谢谢他的项目减少了我很多的毕设工作量。~~~~简中互联网使用环境懂得都懂，平台不开放而且反爬机制肥肠滴先进。QwQ本科毕设只做爬虫的工作量其实就够了。~~
+> ~~谢谢他的项目减少了我很多的毕设工作量。简中互联网使用环境懂得都懂，平台不开放而且反爬机制肥肠滴先进。QwQ本科毕设只做爬虫的工作量其实就够了。~~
 
 本项目的开发基于 Python 3.12 及有关的外部库。
 
