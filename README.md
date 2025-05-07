@@ -1,4 +1,4 @@
-<img src="./static/title.png" title="title" alt="title.png" data-align="center">
+<div align="center"> <img src="./static/title.png" title="title" alt="title.png" data-align="center"> </div>
 
 # PySlangDetector
 
