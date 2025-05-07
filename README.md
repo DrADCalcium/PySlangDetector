@@ -1,4 +1,4 @@
-![title.png](./static/title.png "title")
+<img src="./static/title.png" title="title" alt="title.png" data-align="center">
 
 # PySlangDetector
 
@@ -110,7 +110,7 @@ playwright install -i https://mirrors.aliyun.com/pypi/simple/
 playwright install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 ```
 
-
+ 
 
 ## Usage
 
@@ -199,7 +199,3 @@ python main.py --platform bili --url https://www.bilibili.com/BV123abcDEF
 本项目的开发基于 Python 3.12 及有关的外部库。
 
 本项目使用 JetBrains Inc. 开发的 PyCharm IDE 编写。
-
-~~本项目莫名其妙由 systemd 驱动~~  假的，我拿Windows开发的（笑 
-
-~~（（那我还得感谢微软最近几个Windows累积更新没有让我电脑蓝屏~~
