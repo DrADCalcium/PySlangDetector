@@ -13,9 +13,23 @@ import shutil
 import os
 import platform
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+file_handler = logging.FileHandler('app.log', encoding='utf-8')
+file_handler.setLevel(logging.INFO)
+
+stream_handler = logging.StreamHandler(sys.stdout)
+stream_handler.setLevel(logging.INFO)
+
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - [main] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+file_handler.setFormatter(formatter)
+stream_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 def trie_prebuild():
     prebuild()
-    logging.info("Trie树构建完成，已保存至：/dic/sensitive_words.trie")
+    logger.info("Trie树构建完成，已保存至：/dic/sensitive_words.trie")
 
 def txt_prebuild():
     csv2txt()
@@ -25,7 +39,7 @@ def load_file_lines(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
             return [line.rstrip('\n') for line in f]
     else:
-        logging.info(f"文件 {file_path} 不存在")
+        logger.info(f"文件 {file_path} 不存在")
         sys.exit(1)
 
 def save_file_lines(file_path, lines):
@@ -41,7 +55,7 @@ def data_init():
     if os.path.exists(data_dir):
         shutil.rmtree(data_dir)
     os.makedirs(data_dir)
-    logging.info('程序初始化...')
+    logger.info('程序初始化...')
 
 
 def args_decode(args):
@@ -53,6 +67,7 @@ def args_decode(args):
         sys.exit(0)
 
     if args.platform == 'bili' and args.url:
+        logger.info("正在抓取B站数据...")
         cmd = [
             'python',
             'main.py',
@@ -68,12 +83,13 @@ def args_decode(args):
         # 执行爬虫脚本
         try:
             subprocess.run(cmd, check=True, cwd=str(crawler_dir))
-            logging.info("B站数据抓取完成")
+            logger.info("B站数据抓取完成")
         except subprocess.CalledProcessError as e:
-            logging.error(f"执行出错: {e}")
+            logger.error(f"执行出错: {e}")
             sys.exit(1)
 
     elif args.platform == 'xhs' and args.url:
+        logger.info("正在抓取小红书数据...")
         xhs_id, xsec_token = url2xhs(args.url)
         cmd = [
             'python',
@@ -89,12 +105,13 @@ def args_decode(args):
 
         try:
             subprocess.run(cmd, check=True, cwd=str(crawler_dir))
-            logging.info("小红书数据抓取完成")
+            logger.info("小红书数据抓取完成")
         except subprocess.CalledProcessError as e:
-            logging.error(f"执行出错: {e}")
+            logger.error(f"执行出错: {e}")
             sys.exit(1)
 
     elif args.platform == 'wb' and args.url:
+        logger.info("正在抓取微博数据...")
         cmd = [
             'python',
             'main.py',
@@ -109,9 +126,9 @@ def args_decode(args):
 
         try:
             subprocess.run(cmd, check=True, cwd=str(crawler_dir))
-            logging.info("微博数据抓取完成")
+            logger.info("微博数据抓取完成")
         except subprocess.CalledProcessError as e:
-            logging.error(f"执行出错: {e}")
+            logger.error(f"执行出错: {e}")
             sys.exit(1)
 
     elif args.platform is None:
@@ -121,10 +138,11 @@ def args_decode(args):
             '--help'
         ]
         subprocess.run(cmd, check=True)
-        logging.info("无参数输入，程序退出")
+        logger.info("无参数输入，程序退出")
         sys.exit(0)
 
     elif args.platform and args.login:
+        logger.info(f'正在登录{args.platform}平台...')
         cmd = [
             'python',
             'main.py',
@@ -132,24 +150,16 @@ def args_decode(args):
             '--lt', 'qrcode'
         ]
         result = subprocess.run(cmd, check=True, cwd=str(crawler_dir), capture_output=True, text=True)
-        logging.info(result.stdout)
+        logger.info(result.stdout)
         print(result.stdout)
         if result.stderr:
-            logging.error(result.stderr)
+            logger.error(result.stderr)
             print(result.stderr)
         sys.exit(0)
 
     else:
-        logging.info('请指定有效的平台')
+        logger.info('请指定有效的参数')
         sys.exit(1)
-
-logging.basicConfig(
-        filename='app.log',  # 日志文件名
-        level=logging.INFO,  # 日志级别
-        format='%(asctime)s - %(levelname)s - [main] %(message)s',  # 日志格式
-        datefmt='%Y-%m-%d %H:%M:%S',
-        encoding='utf-8'
-   )
 
 
 if __name__ == '__main__':
@@ -180,8 +190,8 @@ if __name__ == '__main__':
             count = count + 1
 
     if count:
-        logging.info(f"检测到敏感词，共发现 {count} 条敏感内容")
-        logging.info("敏感内容已保存至 data/sensitive_contents.txt")
+        logger.info(f"检测到敏感词，共发现 {count} 条敏感内容")
+        logger.info("敏感内容已保存至 data/sensitive_contents.txt")
 
         if args.show:
             system = platform.system()
@@ -189,16 +199,16 @@ if __name__ == '__main__':
             full_path = Path(file_path).resolve()
             if system == "Windows":
                 os.startfile(str(full_path))
-                logging.info("已通过默认文本编辑器打开敏感文本文件")
+                logger.info("已通过默认文本编辑器打开敏感文本文件")
             elif system == "Darwin":  # macOS
                 subprocess.run(["open", str(full_path)])
-                logging.info("已通过默认文本编辑器打开敏感文本文件")
+                logger.info("已通过默认文本编辑器打开敏感文本文件")
             else:  # Linux 和其他类Unix系统
                 subprocess.run(["xdg-open", str(full_path)])
-                logging.info("已通过默认文本编辑器打开敏感文本文件")
+                logger.info("已通过默认文本编辑器打开敏感文本文件")
 
     else:
-        logging.info("没有检测到敏感内容，程序退出")
+        logger.info("没有检测到敏感内容，程序退出")
         sys.exit(0)
 
 
