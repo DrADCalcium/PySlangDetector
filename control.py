@@ -44,7 +44,7 @@ class Controller:
                 '--url', str(input_url),
                 *(['--show'] if show_result else [])
             ]
-            threading.Thread(target=subprocess.run, args=(cmd,)).start()
+            threading.Thread(target=subprocess.run, args=(cmd,), kwargs={'creationflags': subprocess.CREATE_NO_WINDOW}).start()
 
         elif input_url and selected_platform == "xhs":
             logging.info(f"开始处理小红书URL: {input_url}")
@@ -55,7 +55,7 @@ class Controller:
                 '--url', str(input_url),
                 *(['--show'] if show_result else [])
             ]
-            threading.Thread(target=subprocess.run, args=(cmd,)).start()
+            threading.Thread(target=subprocess.run, args=(cmd,), kwargs={'creationflags': subprocess.CREATE_NO_WINDOW}).start()
 
         elif input_url and selected_platform == "wb":
             logging.info(f"开始处理微博URL: {input_url}")
@@ -66,7 +66,7 @@ class Controller:
                 '--url', str(input_url),
                 *(['--show'] if show_result else [])
             ]
-            threading.Thread(target=subprocess.run, args=(cmd,)).start()
+            threading.Thread(target=subprocess.run, args=(cmd,), kwargs={'creationflags': subprocess.CREATE_NO_WINDOW}).start()
 
         elif not input_url :
             logging.warning("未输入URL")
@@ -93,7 +93,7 @@ class Controller:
             '--platform', 'bili',
             '--lt', 'qrcode'
         ]
-        threading.Thread(target=subprocess.run, args=(cmd,), kwargs={'cwd': str(crawler_dir)}).start()
+        threading.Thread(target=subprocess.run, args=(cmd,), kwargs={'cwd': str(crawler_dir), 'creationflags': subprocess.CREATE_NO_WINDOW}).start()
     def browser_login_xhs(self,evt):
         logging.info("开始小红书登录")
         current_dir = Path(__file__).parent.absolute()
@@ -104,7 +104,7 @@ class Controller:
             '--platform', 'xhs',
             '--lt', 'qrcode'
         ]
-        threading.Thread(target=subprocess.run, args=(cmd,), kwargs={'cwd': str(crawler_dir)}).start()
+        threading.Thread(target=subprocess.run, args=(cmd,), kwargs={'cwd': str(crawler_dir), 'creationflags': subprocess.CREATE_NO_WINDOW}).start()
 
     def browser_login_wb(self,evt):
         logging.info("开始微博登录")
@@ -116,4 +116,4 @@ class Controller:
             '--platform', 'wb',
             '--lt', 'qrcode'
         ]
-        threading.Thread(target=subprocess.run, args=(cmd,), kwargs={'cwd': str(crawler_dir)}).start()
+        threading.Thread(target=subprocess.run, args=(cmd,), kwargs={'cwd': str(crawler_dir), 'creationflags': subprocess.CREATE_NO_WINDOW}).start()
