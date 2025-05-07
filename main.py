@@ -42,7 +42,6 @@ def data_init():
         shutil.rmtree(data_dir)
     os.makedirs(data_dir)
     logging.info('程序初始化...')
-    print('程序初始化...')
 
 
 def args_decode(args):
@@ -70,10 +69,8 @@ def args_decode(args):
         try:
             subprocess.run(cmd, check=True, cwd=str(crawler_dir))
             logging.info("B站数据抓取完成")
-            print("B站数据抓取完成")
         except subprocess.CalledProcessError as e:
             logging.error(f"执行出错: {e}")
-            print(f"执行出错: {e}")
             sys.exit(1)
 
     elif args.platform == 'xhs' and args.url:
@@ -93,10 +90,8 @@ def args_decode(args):
         try:
             subprocess.run(cmd, check=True, cwd=str(crawler_dir))
             logging.info("小红书数据抓取完成")
-            print("小红书数据抓取完成")
         except subprocess.CalledProcessError as e:
             logging.error(f"执行出错: {e}")
-            print(f"执行出错: {e}")
             sys.exit(1)
 
     elif args.platform == 'wb' and args.url:
@@ -115,10 +110,8 @@ def args_decode(args):
         try:
             subprocess.run(cmd, check=True, cwd=str(crawler_dir))
             logging.info("微博数据抓取完成")
-            print("微博数据抓取完成")
         except subprocess.CalledProcessError as e:
             logging.error(f"执行出错: {e}")
-            print(f"执行出错: {e}")
             sys.exit(1)
 
     elif args.platform is None:
@@ -129,7 +122,6 @@ def args_decode(args):
         ]
         subprocess.run(cmd, check=True)
         logging.info("无参数输入，程序退出")
-        print("无参数输入，程序退出")
         sys.exit(0)
 
     elif args.platform and args.login:
@@ -149,7 +141,6 @@ def args_decode(args):
 
     else:
         logging.info('请指定有效的平台')
-        print('请指定有效的平台')
         sys.exit(1)
 
 logging.basicConfig(
@@ -190,9 +181,7 @@ if __name__ == '__main__':
 
     if count:
         logging.info(f"检测到敏感词，共发现 {count} 条敏感内容")
-        print(f"检测到敏感词，共发现 {count} 条敏感内容")
         logging.info("敏感内容已保存至 data/sensitive_contents.txt")
-        print("敏感内容已保存至 data/sensitive_contents.txt")
 
         if args.show:
             system = platform.system()
@@ -201,19 +190,15 @@ if __name__ == '__main__':
             if system == "Windows":
                 os.startfile(str(full_path))
                 logging.info("已通过默认文本编辑器打开敏感文本文件")
-                print("已通过默认文本编辑器打开敏感文本文件")
             elif system == "Darwin":  # macOS
                 subprocess.run(["open", str(full_path)])
                 logging.info("已通过默认文本编辑器打开敏感文本文件")
-                print("已通过默认文本编辑器打开敏感文本文件")
             else:  # Linux 和其他类Unix系统
                 subprocess.run(["xdg-open", str(full_path)])
                 logging.info("已通过默认文本编辑器打开敏感文本文件")
-                print("已通过默认文本编辑器打开敏感文本文件")
 
     else:
         logging.info("没有检测到敏感内容，程序退出")
-        print("没有检测到敏感内容，程序退出")
         sys.exit(0)
 
 
