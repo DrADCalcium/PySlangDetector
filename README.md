@@ -1,6 +1,6 @@
 <div align="center"> <img src="./static/title.png" title="title" alt="title.png" data-align="center"> </div>
 
-<div align="center"> # PySlangDetector </div>
+<div align="center"><h1> PySlangDetector </h1></div>
 
 *小孩子不可以在网上说藏话，不懂事说着玩也不可以哦。*
 
