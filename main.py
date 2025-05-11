@@ -186,16 +186,16 @@ if __name__ == '__main__':
         words =  tokenizer.tokenize(line)
         is_sensitive =  FilterAPI.check_sensitive(filter_instance, words)
         if is_sensitive:
-            save_file_lines('data/sensitive_contents.txt', [line + '\n'])
+            save_file_lines('data/filtered_contents.txt', [line + '\n'])
             count = count + 1
 
     if count:
         logger.info(f"检测到敏感词，共发现 {count} 条敏感内容")
-        logger.info("敏感内容已保存至 data/sensitive_contents.txt")
+        logger.info("敏感内容已保存至 data/filtered_contents.txt")
 
         if args.show:
             system = platform.system()
-            file_path = 'data/sensitive_contents.txt'
+            file_path = 'data/filtered_contents.txt'
             full_path = Path(file_path).resolve()
             if system == "Windows":
                 os.startfile(str(full_path))
