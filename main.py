@@ -193,7 +193,7 @@ if __name__ == '__main__':
         logger.info(f"检测到敏感词，共发现 {count} 条敏感内容")
         logger.info("敏感内容已保存至 data/filtered_contents.txt")
 
-        if args.show:
+        if args.show and count:
             system = platform.system()
             file_path = 'data/filtered_contents.txt'
             full_path = Path(file_path).resolve()
