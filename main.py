@@ -13,6 +13,7 @@ import shutil
 import os
 import platform
 
+# 日志控制
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -27,6 +28,7 @@ file_handler.setFormatter(formatter)
 stream_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
+
 def trie_prebuild():
     prebuild()
     logger.info("Trie树构建完成，已保存至：/dic/sensitive_words.trie")
