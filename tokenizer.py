@@ -29,7 +29,7 @@ class Tokenizer:
         """
         执行分词操作
         :param text: 输入文本
-        :param mode: 分词模式（accurate/全模式）
+        :param mode: 分词模式（accurate/full）
         :return: 分词结果列表
         """
         # 预处理：分离中英文
