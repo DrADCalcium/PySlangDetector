@@ -55,8 +55,11 @@ if __name__ == "__main__":
     # 初始化
     trie = pygtrie.CharTrie()
     trie["敏感词"] = True
+    print("将'敏感词'添加到Trie树")
     filter = SensitiveFilter(trie)
 
     # Sample
-    print(filter.contains_sensitive(["正常", "文本"]))  # False
-    print(filter.contains_sensitive(["包含", "敏感词"]))  # True
+    print("检测['正常', '文本']")
+    print(f"检测结果为 {filter.contains_sensitive(['正常', '文本'])}") # False
+    print("检测['包含', '敏感词']")
+    print(f"检测结果为 {filter.contains_sensitive(['包含', '敏感词'])}")  # True
