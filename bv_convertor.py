@@ -41,9 +41,9 @@ def extract_bv_from_url(url):
 # 测试示例
 if __name__ == "__main__":
     test_urls = [
-        "https://www.bilibili.com/video/BV1ztSeYxEgp/?share_source=copy_web&vd_source=cdb078b803a73459090c408d9ecbf954",
-        "https://b23.tv/O5EBqUR",
-        "无效的URL"
+        "https://www.bilibili.com/video/BV1bW411n7fY/?spm_id_from=333.337.search-card.all.click&vd_source=5624879d0f5e0303587b4acf76eb70c2",
+        "https://b23.tv/qwQHvnK",
+        "https://www.python.org/downloads/release/python-31210/"
     ]
 
     for url in test_urls:
