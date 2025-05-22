@@ -34,7 +34,6 @@ def main():
     print(f"Trie树构建完成，已保存至：{output_path}")
 
 if __name__ == "__main__":
-    main()
 
     print("\n=== 开始Trie树测试 ===")
     test_words = [
