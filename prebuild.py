@@ -56,6 +56,8 @@ if __name__ == "__main__":
     with open(test_output_path, 'rb') as f:
         loaded_trie = pickle.load(f)
 
+    print(f"测试词为：{test_words}")
+
     print("\nTrie树内容:")
     for word in test_words:
         print(f"单词 '{word}' 存在于Trie树中: {'是' if word in loaded_trie else '否'}")
