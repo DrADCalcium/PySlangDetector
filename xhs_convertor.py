@@ -33,9 +33,14 @@ def extract_xhs_from_url(url):
     parsed_url = urlparse(url)
     query_params = parse_qs(parsed_url.query)  # 解析查询参数
 
-    # 提取推文ID（直接从路径中提取）
-    tweet_id = parsed_url.path.split("/item/")[-1].split("?")[0]
-    #print("推文ID:", tweet_id)  # 输出: 1234567890
+    # 提取推文ID（从路径中提取）
+    path = parsed_url.path
+    if "/discovery/item/" in path:
+        tweet_id = path.split("/discovery/item/")[-1].split("?")[0]
+    elif "/explore/" in path:
+        tweet_id = path.split("/explore/")[-1].split("?")[0]
+    else:
+        tweet_id = None
 
     # 提取 xsec_token（从查询参数中获取）
     xsec_token = query_params.get("xsec_token", [None])[0]
@@ -49,13 +54,18 @@ def extract_xhs_from_url(url):
 
 #测试实例
 if __name__ == '__main__':
-    test_urls = ['http://xhslink.com/a/XIbCDRUzFiObb',
-                 'https://www.xiaohongshu.com/discovery/item/6807a827000000001202c7c0?app_platform=ios&app_version=8.81.2&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CB8CE-Xn4JgewHBHkqI6z_cWQ-iOIJl1bXZtAWx19DAR4=&author_share=1&xhsshare=CopyLink&shareRedId=OD4yNztGOko2NzUyOTgwNjZEOTpJO0dK&apptime=1746436889&share_id=384f4fe9981347a9891e3dc7d48722f9']
+    test_urls = ['http://xhslink.com/a/gkZiVrZ7lb8cb',
+                 'https://www.xiaohongshu.com/explore/6825577f000000000303cf6d?app_platform=ios&app_version=8.84&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBBEXdqlOZeRLAt8UQMoU_jZ2TBhBHcapd5zEzZoHTH1U=&author_share=1&xhsshare=CopyLink&shareRedId=ODpHMkhHNDo2NzUyOTgwNjY0OTg2Ozs7&apptime=1747899252&share_id=0df55d638f334d828e60f4833ae12284',
+                 'https://www.python.org/downloads/release/python-31210/']
 
     for url in test_urls:
         xhs_id, xsec_token = extract_xhs_from_url(url)
         if xhs_id and xsec_token:
+            print(f"URL: {url}")
             print(f"推文ID: {xhs_id}")
             print(f"xsec_token: {xsec_token}")
+            print("")
         else:
+            print(f"URL: {url}")
             print("推文ID或xsec_token提取失败")
+            print("")
