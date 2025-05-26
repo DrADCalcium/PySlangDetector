@@ -3,6 +3,7 @@ __pycache__/
 .venv/
 */*.trie
 */*.ttc
+*/dic/*
 */raw/*
 !*/raw/example.txt
 /temp
@@ -10,3 +11,5 @@ app.log
 /build
 tk_GUI.exe
 tk_GUI.spec
+
+*.txt
